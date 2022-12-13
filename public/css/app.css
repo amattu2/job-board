@@ -1,0 +1,38 @@
+@import url(https://fonts.googleapis.com/css?family=Lato);
+html,
+body {
+  font-family: "Lato", sans-serif;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  background: #f2f2f2;
+}
+
+#app {
+  height: 100%;
+}
+
+.login-form-button {
+  width: 100%;
+}
+
+.login-form-forgot {
+  float: right;
+}
+
+.register-form .ant-form-item {
+  margin-bottom: 10px;
+}
+.register-form .ant-form-item-label {
+  padding: 0 !important;
+}
+.register-form .ant-form-item-label label {
+  height: 30px;
+}
+
+.auth-spin {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}

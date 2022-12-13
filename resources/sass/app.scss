@@ -1,0 +1,47 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Lato');
+
+// Variables
+@import 'variables';
+
+html,
+body {
+    font-family: 'Lato', sans-serif;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    background: $body-bg;
+}
+
+#app {
+    height: 100%;
+}
+
+.login-form-button {
+    width: 100%;
+}
+
+.login-form-forgot {
+    float: right;
+}
+
+.register-form {
+    .ant-form-item {
+        margin-bottom: 10px;
+    }
+
+    .ant-form-item-label {
+        padding: 0 !important;
+
+        label {
+            height: 30px;
+        }
+    }
+}
+
+.auth-spin {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
