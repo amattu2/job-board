@@ -1,6 +1,6 @@
 import React from 'react';
 import { lazy, Suspense } from 'react';
-import { BrowserRouter as Router, Switch } from 'react-router-dom';
+import { HashRouter as Router, Switch } from 'react-router-dom';
 import { PrivateRoute, PublicRoute } from '../routes/helpers';
 import ProtectedRoutes from '../routes/ProtectedRoutes';
 
@@ -21,7 +21,7 @@ export function AppRoutes({ isAuthenticated }) {
           <PublicRoute path="/register" isAuthenticated={isAuthenticated} exact>
             <Registration />
           </PublicRoute>
-          <PrivateRoute path="/" isAuthenticated={isAuthenticated} >
+          <PrivateRoute path="/" isAuthenticated={isAuthenticated}>
             <ProtectedRoutes />
           </PrivateRoute>
         </Switch>
