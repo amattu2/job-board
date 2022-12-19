@@ -1,6 +1,6 @@
 import React from 'react';
 import { lazy, Suspense } from 'react';
-import { HashRouter as Router, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Switch } from 'react-router-dom';
 import { PrivateRoute, PublicRoute } from '../routes/helpers';
 import ProtectedRoutes from '../routes/ProtectedRoutes';
 
