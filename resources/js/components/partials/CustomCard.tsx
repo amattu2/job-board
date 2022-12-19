@@ -18,39 +18,44 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-import React from 'react';
-import { Card, Empty, Skeleton } from 'antd';
+import React from "react";
+import { Card, Empty, Skeleton } from "antd";
 
 /**
- * JobCard Properties
+ * CustomCard Properties
  */
-interface CardProps {
-  title: string;
-  content?: string|JSX.Element;
-};
+interface Props {
+  title?: string;
+  children?: string | JSX.Element | JSX.Element[];
+  style?: React.CSSProperties;
+}
 
 /**
  * Render a antd card
  *
- * @param {CardProps} {title, content}
+ * @param {Props} {title, content}
  * @returns JSX.Element
  */
-const JobCard = ({title, content = <Skeleton active={true} />}: CardProps): JSX.Element => {
+const CustomCard = ({
+  title,
+  children = <Skeleton active={true} />,
+  style = {},
+}: Props): JSX.Element => {
   return (
     <Card
       title={title}
       bordered={false}
       style={{
-        background: '#fff',
-        borderRadius: '3px',
-        border: '0.1px solid rgba(0,0,0,0.1)',
-        width: '100%',
-        marginBottom: '8px',
+        background: "#fff",
+        borderRadius: "3px",
+        border: "0.1px solid rgba(0,0,0,0.1)",
+        width: "100%",
+        ...style,
       }}
     >
-      {content}
+      {children}
     </Card>
   );
 };
 
-export default JobCard;
+export default CustomCard;

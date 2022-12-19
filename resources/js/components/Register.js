@@ -131,7 +131,7 @@ export default function Register() {
                 >
                   Register
                 </Button>
-                Already have an account? <NavLink to="/login">Login in.</NavLink>
+                Already have an account? <NavLink to="/login">Login.</NavLink>
               </Form.Item>
             </Form>
           </Card>

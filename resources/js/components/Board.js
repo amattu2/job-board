@@ -25,16 +25,16 @@ import {
   Layout,
   Row,
   Tag,
+  Typography,
   Pagination,
-  Skeleton,
   Card,
   Segmented,
   Form,
   Button,
   Input,
+  Space,
 } from 'antd';
-import JobCard from './partials/JobCard';
-import JobDetailCard from './partials/JobDetailCard';
+import CustomCard from './partials/CustomCard';
 import {
   CalendarOutlined,
   CompassOutlined,
@@ -42,8 +42,9 @@ import {
 } from '@ant-design/icons';
 
 const Board = () => {
+  const { Title, Text, Link } = Typography;
   const { Content } = Layout;
-  const [ form ] = Form.useForm();
+  const [form] = Form.useForm();
 
   return (
     <Layout className="layout">
@@ -105,8 +106,6 @@ const Board = () => {
                       icon: <CompassOutlined style={{ marginRight: '5px' }} />,
                     },
                   ]}
-                  onResize={undefined}
-                  onResizeCapture={undefined}
                 />
               </Col>
               <Col span={12} style={{ textAlign: 'right' }}>
@@ -115,8 +114,10 @@ const Board = () => {
             </Row>
 
             <Row style={{ overflowY: 'auto', marginBottom: '8px' }}>
-              <JobCard title="Job 1" />
-              <JobCard title="Job 2" />
+              <Space direction="vertical" style={{ width: '100%' }}>
+                <CustomCard title="Job 1" />
+                <CustomCard title="Job 2" />
+              </Space>
             </Row>
 
             <Row style={{ textAlign: 'center', marginBottom: '8px' }}>
@@ -124,7 +125,27 @@ const Board = () => {
             </Row>
           </Col>
           <Col span={16} style={{ padding: '15px', paddingRight: 0 }}>
-            <JobDetailCard />
+            <CustomCard>
+              <Row>
+                <Space.Compact direction="vertical">
+                  <Title level={4} style={{ margin: '0' }}>
+                    Frontend Software Engineer
+                  </Title>
+                  <Link href="https://ant.design" target="_blank">
+                    Ant Design
+                  </Link>
+                  <Text>Raleigh, NC 27604</Text>
+                  <Space.Compact
+                    direction="horizontal"
+                    style={{ marginTop: '8px' }}
+                  >
+                    <Tag color="default">remote</Tag>
+                    <Tag color="default">401k</Tag>
+                    <Tag color="default">flex-hours</Tag>
+                  </Space.Compact>
+                </Space.Compact>
+              </Row>
+            </CustomCard>
           </Col>
         </Row>
       </Content>

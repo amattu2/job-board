@@ -19,29 +19,31 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 import React from "react";
-import { Card, Empty, Spin, Timeline } from "antd";
-import { LoadingOutlined } from "@ant-design/icons";
+import { Button, Result } from "antd";
 
 /**
  * Render a antd card
  *
- * @param {JobDetailCard} {title, content}
+ * @param {Props}
  * @returns JSX.Element
  */
-const JobDetailCard = (props: any): JSX.Element => {
+const JobSubmitted = ({
+  status = "success",
+  title = "Successfully Submitted Application!",
+  subTitle = "Your job application to {company} has been successfully submitted. Keep an eye out for a status update email.",
+}: any): JSX.Element => {
   return (
-    <Card
-      bordered={false}
-      style={{
-        width: "100%",
-        background: "#fff",
-        borderRadius: "3px",
-        border: "0.1px solid rgba(0,0,0,0.1)",
-      }}
-    >
-      <Empty />
-    </Card>
+    <Result
+      status={status}
+      title={title}
+      subTitle={subTitle}
+      extra={[
+        <Button type="primary" key="dismuss">
+          Dismiss
+        </Button>,
+      ]}
+    />
   );
 };
 
-export default JobDetailCard;
+export default JobSubmitted;

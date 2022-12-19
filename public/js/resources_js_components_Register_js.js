@@ -170,7 +170,7 @@ function Register() {
                 children: "Register"
               }), "Already have an account? ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_11__.NavLink, {
                 to: "/login",
-                children: "Login in."
+                children: "Login."
               })]
             })]
           })
