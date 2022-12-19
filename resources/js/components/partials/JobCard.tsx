@@ -19,14 +19,14 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 import React from 'react';
-import { Card } from 'antd';
+import { Card, Empty, Skeleton } from 'antd';
 
 /**
  * JobCard Properties
  */
 interface CardProps {
   title: string;
-  content: string|JSX.Element;
+  content?: string|JSX.Element;
 };
 
 /**
@@ -35,7 +35,7 @@ interface CardProps {
  * @param {CardProps} {title, content}
  * @returns JSX.Element
  */
-const JobCard = ({title, content}: CardProps): JSX.Element => {
+const JobCard = ({title, content = <Skeleton active={true} />}: CardProps): JSX.Element => {
   return (
     <Card
       title={title}

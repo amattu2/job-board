@@ -24,7 +24,6 @@ import {
   Divider,
   Layout,
   Row,
-  Typography,
   Tag,
   Pagination,
   Skeleton,
@@ -43,8 +42,7 @@ import {
 } from '@ant-design/icons';
 
 const Board = () => {
-  const { Title } = Typography;
-  const { Header, Content } = Layout;
+  const { Content } = Layout;
   const [ form ] = Form.useForm();
 
   return (
@@ -117,8 +115,8 @@ const Board = () => {
             </Row>
 
             <Row style={{ overflowY: 'auto', marginBottom: '8px' }}>
-              <JobCard title="Job 1" content={<Skeleton active={true} />} />
-              <JobCard title="Job 2" content={<Skeleton active={true} />} />
+              <JobCard title="Job 1" />
+              <JobCard title="Job 2" />
             </Row>
 
             <Row style={{ textAlign: 'center', marginBottom: '8px' }}>
