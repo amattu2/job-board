@@ -49,12 +49,7 @@ var icons_1 = __webpack_require__(/*! @ant-design/icons */ "./node_modules/@ant-
 
 var react_router_dom_1 = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 
-var actions_1 = __importDefault(__webpack_require__(/*! ../redux/Authenticate/actions */ "./resources/js/redux/Authenticate/actions.js"));
-
-var _antd_1$Layout = antd_1.Layout,
-    Header = _antd_1$Layout.Header,
-    Content = _antd_1$Layout.Content,
-    Footer = _antd_1$Layout.Footer;
+var actions_1 = __importDefault(__webpack_require__(/*! ../redux/Authenticate/actions */ "./resources/js/redux/Authenticate/actions.tsx"));
 
 function Login() {
   var _ref = (0, react_redux_1.useSelector)(function (state) {

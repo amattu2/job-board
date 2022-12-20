@@ -1,18 +1,18 @@
-// Private route restrict to access public pages after login.
-import {Redirect, Route} from 'react-router-dom';
+import React from 'react';
+import { Redirect, Route } from 'react-router-dom';
 
-export function PrivateRoute({children, isAuthenticated, ...rest}) {
+export function PrivateRoute({ children, isAuthenticated, ...rest }) {
   return (
     <Route
       {...rest}
-      render={({location}) =>
+      render={({ location }) =>
         (isAuthenticated ? (
           children
         ) : (
           <Redirect
             to={{
               pathname: '/login',
-              state: {from: location},
+              state: { from: location },
             }}
           />
         ))
@@ -22,22 +22,21 @@ export function PrivateRoute({children, isAuthenticated, ...rest}) {
 }
 
 // Public route restrict to access authenticated pages before login.
-export function PublicRoute({children, isAuthenticated, ...rest}) {
+export function PublicRoute({ children, isAuthenticated, ...rest }) {
   return (
     <Route
       {...rest}
-      render={
-        ({location}) =>
-          (!isAuthenticated ? (
-            children
-          ) : (
-            <Redirect
-              to={{
-                pathname: '/board',
-                state: {from: location},
-              }}
-            />
-          ))
+      render={({ location }) =>
+        (!isAuthenticated ? (
+          children
+        ) : (
+          <Redirect
+            to={{
+              pathname: '/board',
+              state: { from: location },
+            }}
+          />
+        ))
       }
     />
   );

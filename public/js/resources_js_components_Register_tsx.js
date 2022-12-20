@@ -59,7 +59,7 @@ var antd_1 = __webpack_require__(/*! antd */ "./node_modules/antd/es/index.js");
 
 var react_router_dom_1 = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 
-var actions_1 = __importDefault(__webpack_require__(/*! ../redux/Authenticate/actions */ "./resources/js/redux/Authenticate/actions.js"));
+var actions_1 = __importDefault(__webpack_require__(/*! ../redux/Authenticate/actions */ "./resources/js/redux/Authenticate/actions.tsx"));
 
 function Register() {
   var _ref = (0, react_redux_1.useSelector)(function (state) {
@@ -162,7 +162,7 @@ function Register() {
     loading: registerLoader
   }, "Register"), "Already have an account? ", react_1["default"].createElement(react_router_dom_1.NavLink, {
     to: "/login"
-  }, "Login in.")))))));
+  }, "Login.")))))));
 }
 
 exports["default"] = Register;
