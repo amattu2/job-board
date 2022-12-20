@@ -201,7 +201,58 @@ var Board = function Board() {
     color: "default"
   }, "401k"), react_1["default"].createElement(antd_1.Tag, {
     color: "default"
-  }, "flex-hours")))))))));
+  }, "flex-hours")))), react_1["default"].createElement(antd_1.Divider, null), react_1["default"].createElement(antd_1.Row, null, react_1["default"].createElement(antd_1.Col, {
+    span: 12,
+    style: {
+      paddingRight: "32px"
+    }
+  }, react_1["default"].createElement(antd_1.Descriptions, {
+    title: "Job Overview",
+    bordered: true,
+    column: {
+      xxl: 1
+    }
+  }, react_1["default"].createElement(antd_1.Descriptions.Item, {
+    label: "Salary"
+  }, "$100,000 - $120,000"), react_1["default"].createElement(antd_1.Descriptions.Item, {
+    label: "Type"
+  }, react_1["default"].createElement(antd_1.Tag, {
+    color: "default"
+  }, "full time"), react_1["default"].createElement(antd_1.Tag, {
+    color: "default"
+  }, "contract")), react_1["default"].createElement(antd_1.Descriptions.Item, {
+    label: "Schedule"
+  }, react_1["default"].createElement(antd_1.Tag, {
+    color: "default"
+  }, "8am - 5pm"), react_1["default"].createElement(antd_1.Tag, {
+    color: "default"
+  }, "Monday - Thursday")))), react_1["default"].createElement(antd_1.Col, {
+    span: 12
+  }, react_1["default"].createElement(Title, {
+    level: 5,
+    style: {
+      margin: 0
+    }
+  }, "Benefits"), react_1["default"].createElement(Text, {
+    italic: true
+  }, "Derived from the full job listing content."), react_1["default"].createElement(antd_1.Space, {
+    direction: "horizontal",
+    style: {
+      marginTop: "8px"
+    }
+  }, react_1["default"].createElement(antd_1.Tag, {
+    color: "default"
+  }, "401k"), react_1["default"].createElement(antd_1.Tag, {
+    color: "default"
+  }, "flex-hours"), react_1["default"].createElement(antd_1.Tag, {
+    color: "default"
+  }, "remote"), react_1["default"].createElement(antd_1.Tag, {
+    color: "default"
+  }, "paid-time-off"), react_1["default"].createElement(antd_1.Tag, {
+    color: "default"
+  }, "health-insurance"), react_1["default"].createElement(antd_1.Tag, {
+    color: "default"
+  }, "vision-insurance")))), react_1["default"].createElement(antd_1.Divider, null), react_1["default"].createElement(antd_1.Row, null, "..."))))));
 };
 
 exports["default"] = Board;

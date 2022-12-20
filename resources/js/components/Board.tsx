@@ -33,6 +33,7 @@ import {
   Button,
   Input,
   Space,
+  Descriptions,
 } from "antd";
 import CustomCard from "./partials/CustomCard";
 import {
@@ -147,6 +148,46 @@ const Board = () => {
                   </Space.Compact>
                 </Space.Compact>
               </Row>
+              <Divider />
+              <Row>
+                <Col span={12} style={{ paddingRight: "32px" }}>
+                  <Descriptions
+                    title="Job Overview"
+                    bordered
+                    column={{ xxl: 1 }}
+                  >
+                    <Descriptions.Item label="Salary">
+                      $100,000 - $120,000
+                    </Descriptions.Item>
+                    <Descriptions.Item label="Type">
+                      <Tag color="default">full time</Tag>
+                      <Tag color="default">contract</Tag>
+                    </Descriptions.Item>
+                    <Descriptions.Item label="Schedule">
+                      <Tag color="default">8am - 5pm</Tag>
+                      <Tag color="default">Monday - Thursday</Tag>
+                    </Descriptions.Item>
+                  </Descriptions>
+                </Col>
+                <Col span={12}>
+                  <Title level={5} style={{ margin: 0 }}>
+                    Benefits
+                  </Title>
+                  <Text italic>
+                    Derived from the full job listing content.
+                  </Text>
+                  <Space direction="horizontal" style={{ marginTop: "8px" }}>
+                    <Tag color="default">401k</Tag>
+                    <Tag color="default">flex-hours</Tag>
+                    <Tag color="default">remote</Tag>
+                    <Tag color="default">paid-time-off</Tag>
+                    <Tag color="default">health-insurance</Tag>
+                    <Tag color="default">vision-insurance</Tag>
+                  </Space>
+                </Col>
+              </Row>
+              <Divider />
+              <Row>...</Row>
             </CustomCard>
           </Col>
         </Row>
