@@ -18,26 +18,19 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-import React, { useState } from 'react';
+import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { Layout, Menu } from 'antd';
-import { FileSearchOutlined } from '@ant-design/icons';
-import actions from '../redux/Authenticate/actions';
+import { useDispatch } from 'react-redux';
+import { Layout, Menu, Image, Avatar, Space } from 'antd';
+import {
+  FileSearchOutlined,
+  MonitorOutlined,
+  UserOutlined,
+} from '@ant-design/icons';
 import routes from './routes';
 
 function ProtectedRoutes() {
-  const dispatch = useDispatch();
   const { Sider, Content } = Layout;
-  const { name, logOutLoader } = useSelector(
-    (state) => state.authenticateReducer,
-  );
-
-  const onLogout = () => {
-    dispatch({
-      type: actions.LOGOUT,
-    });
-  };
 
   const getItem = (label, key, icon, children) => ({
     key,
@@ -46,24 +39,39 @@ function ProtectedRoutes() {
     label,
   });
 
-  const items = [getItem('Job Board', '1', <FileSearchOutlined />)];
+  const items = [
+    getItem('Job Board', '1', <FileSearchOutlined />),
+    getItem('Salaries', '2', <MonitorOutlined />),
+  ];
 
   return (
     <Layout style={{ height: '100%' }}>
       <Sider collapsed={true}>
-        <div
-          style={{
-            height: 32,
-            margin: 16,
-            background: 'rgba(255, 255, 255, 0.2)',
-          }}
-        />
+        <div style={{ textAlign: 'center', padding: '8px', margin: '8px 0' }}>
+          <Image
+            src="https://via.placeholder.com/128x128"
+            width={64}
+            height={32}
+            preview={false}
+          />
+        </div>
         <Menu
           theme="dark"
           defaultSelectedKeys={['1']}
           mode="inline"
           items={items}
         />
+        <div
+          style={{
+            position: 'absolute',
+            bottom: 0,
+            width: '100%',
+            padding: '12px',
+            textAlign: 'center',
+          }}
+        >
+          <Avatar shape="square" size="large" icon={<UserOutlined />} />
+        </div>
       </Sider>
       <Content>
         <Switch>
