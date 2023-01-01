@@ -20,7 +20,7 @@
     },
     "dependencies": {
         "@ant-design/icons": "^4.4.0",
-        "@babel/eslint-parser": "^7.12.16",
+        "@babel/eslint-parser": "^7.19.1",
         "@reduxjs/toolkit": "^1.9.1",
         "antd": "^5.0.7",
         "axios": "^1.2.1",
