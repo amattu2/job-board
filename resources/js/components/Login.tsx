@@ -18,17 +18,33 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
 import React from 'react';
-import { RootStateOrAny, useDispatch, useSelector } from 'react-redux';
-import { Form, Input, Button, Checkbox, Row, Col, Card, Layout } from 'antd';
+import { useDispatch, useSelector } from 'react-redux';
+import { Form, Input, Button, Checkbox, Row, Col, Card, Layout, notification } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import actions from '../redux/Authenticate/actions';
 
-export default function Login() {
-  const { loader } = useSelector((state : RootStateOrAny) => state.authenticateReducer);
-  const dispatch = useDispatch();
+interface RootState {
+  isOn: boolean,
+  authenticateReducer: any,
+};
 
+export default function Login() {
+  const { state } = useLocation();
+  const { error } = state ?? {};
+  if (error && error === 'unauthenticated') {
+    notification.error({
+      message: 'Oops!',
+      description: 'Please login to continue.',
+      placement: 'topRight',
+      key: 'unauthenticated',
+    });
+  }
+
+  const { loader } = useSelector((state : RootState) => state.authenticateReducer);
+  const dispatch = useDispatch();
   const onFinish = (values : any) => {
     dispatch({
       type: actions.LOGIN,
@@ -83,7 +99,7 @@ export default function Login() {
                 <Form.Item name="remember" valuePropName="checked" noStyle>
                   <Checkbox>Remember me</Checkbox>
                 </Form.Item>
-                <a className="login-form-forgot" href="">
+                <a className="login-form-forgot">
                   Forgot password
                 </a>
               </Form.Item>

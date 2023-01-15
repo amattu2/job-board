@@ -9,15 +9,6 @@
 
 
 
-var __importDefault = this && this.__importDefault || function (mod) {
-  return mod && mod.__esModule ? mod : {
-    "default": mod
-  };
-};
-
-Object.defineProperty(exports, "__esModule", ({
-  value: true
-}));
 /*
  * Produced: Sun Dec 18 2022
  * Author: Alec M.
@@ -38,27 +29,39 @@ Object.defineProperty(exports, "__esModule", ({
  * You should have received a copy of the GNU Affero General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-
+var __importDefault = this && this.__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
 var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
-
 var react_redux_1 = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-
 var antd_1 = __webpack_require__(/*! antd */ "./node_modules/antd/es/index.js");
-
 var icons_1 = __webpack_require__(/*! @ant-design/icons */ "./node_modules/@ant-design/icons/es/index.js");
-
-var react_router_dom_1 = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-
+var react_router_dom_1 = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js");
 var actions_1 = __importDefault(__webpack_require__(/*! ../redux/Authenticate/actions */ "./resources/js/redux/Authenticate/actions.tsx"));
-
+;
 function Login() {
-  var _ref = (0, react_redux_1.useSelector)(function (state) {
-    return state.authenticateReducer;
-  }),
-      loader = _ref.loader;
-
+  var _ref = (0, react_router_dom_1.useLocation)(),
+    state = _ref.state;
+  var _ref2 = state !== null && state !== void 0 ? state : {},
+    error = _ref2.error;
+  if (error && error === 'unauthenticated') {
+    antd_1.notification.error({
+      message: 'Oops!',
+      description: 'Please login to continue.',
+      placement: 'topRight',
+      key: 'unauthenticated'
+    });
+  }
+  var _ref3 = (0, react_redux_1.useSelector)(function (state) {
+      return state.authenticateReducer;
+    }),
+    loader = _ref3.loader;
   var dispatch = (0, react_redux_1.useDispatch)();
-
   var onFinish = function onFinish(values) {
     dispatch({
       type: actions_1["default"].LOGIN,
@@ -69,7 +72,6 @@ function Login() {
       }
     });
   };
-
   return react_1["default"].createElement(antd_1.Layout, {
     className: "layout",
     style: {
@@ -121,8 +123,7 @@ function Login() {
     valuePropName: "checked",
     noStyle: true
   }, react_1["default"].createElement(antd_1.Checkbox, null, "Remember me")), react_1["default"].createElement("a", {
-    className: "login-form-forgot",
-    href: ""
+    className: "login-form-forgot"
   }, "Forgot password")), react_1["default"].createElement(antd_1.Form.Item, null, react_1["default"].createElement(antd_1.Button, {
     loading: loader,
     type: "primary",
@@ -133,7 +134,6 @@ function Login() {
     to: "/register"
   }, "register now!")))))));
 }
-
 exports["default"] = Login;
 ;
 

@@ -18,9 +18,9 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { Route, Routes } from 'react-router-dom';
 import { Layout, Menu, Image, Avatar, Space } from 'antd';
 import {
   FileSearchOutlined,
@@ -29,13 +29,12 @@ import {
 } from '@ant-design/icons';
 import routes from './routes';
 
-function ProtectedRoutes() {
+export const ProtectedRoutes = () => {
   const { Sider, Content } = Layout;
 
-  const getItem = (label, key, icon, children) => ({
+  const getItem = (label : string, key : string, icon : React.ReactElement) => ({
     key,
     icon,
-    children,
     label,
   });
 
@@ -74,16 +73,14 @@ function ProtectedRoutes() {
         </div>
       </Sider>
       <Content>
-        <Switch>
-          {routes.map(({ component: Component, path, exact }, index) => (
-            <Route path={`/${path}`} key={index} exact={exact}>
+        {/* <Routes>
+          {routes.map(({ component: Component, path }: any, index: React.Key | null | undefined) => (
+            <Route path={`/${path}`} key={index}>
               <Component />
             </Route>
           ))}
-        </Switch>
+        </Routes> */}
       </Content>
     </Layout>
   );
-}
-
-export default ProtectedRoutes;
+};

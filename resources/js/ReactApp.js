@@ -18,13 +18,14 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import actions from './redux/Authenticate/actions';
 import Spinner from './components/partials/Spinner';
 import { AppRoutes } from './routes/AppRoutes';
 
-function ReactApp() {
+export const ReactApp = () => {
   const { isAuthenticated, validateUserLoader } = useSelector(
     (state) => state.authenticateReducer,
   );
@@ -41,7 +42,6 @@ function ReactApp() {
   if (validateUserLoader) {
     return <Spinner />;
   }
-  return <AppRoutes isAuthenticated={isAuthenticated} />;
-}
 
-export default ReactApp;
+  return <AppRoutes isAuthenticated={isAuthenticated} />;
+};

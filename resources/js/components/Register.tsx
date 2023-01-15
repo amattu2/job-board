@@ -19,13 +19,18 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 import React from 'react';
-import { RootStateOrAny, useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Button, Col, Card, Form, Input, Layout, Row } from 'antd';
 import { NavLink } from 'react-router-dom';
 import actions from '../redux/Authenticate/actions';
 
+interface RootState {
+  isOn: boolean,
+  authenticateReducer: any,
+};
+
 export default function Register() {
-  const { registerLoader } = useSelector((state : RootStateOrAny) => state.authenticateReducer);
+  const { registerLoader } = useSelector((state : RootState) => state.authenticateReducer);
   const dispatch = useDispatch();
   const [form] = Form.useForm();
 

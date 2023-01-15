@@ -19,40 +19,42 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import React from 'react';
-import { lazy, Suspense } from 'react';
+import React, { lazy, Suspense } from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { Spin } from 'antd';
 import { LoadingOutlined } from '@ant-design/icons';
-import { BrowserRouter as Router, Switch } from 'react-router-dom';
-import { PrivateRoute, PublicRoute } from '../routes/helpers';
-import ProtectedRoutes from '../routes/ProtectedRoutes';
+import { ProtectedRoutes } from '../routes/ProtectedRoutes';
 
 const Login = lazy(() => import('../components/Login'));
 const Registration = lazy(() => import('../components/Register'));
 
-export function AppRoutes({ isAuthenticated }) {
-  return (
-    <Router>
-      <Suspense
-        fallback={
-          <Spin indicator={<LoadingOutlined style={{ fontSize: 60 }} spin />} />
-        }
-      >
-        <Switch>
-          <PublicRoute path="/" isAuthenticated={isAuthenticated} exact>
-            <Login />
-          </PublicRoute>
-          <PublicRoute path="/login" isAuthenticated={isAuthenticated} exact>
-            <Login />
-          </PublicRoute>
-          <PublicRoute path="/register" isAuthenticated={isAuthenticated} exact>
-            <Registration />
-          </PublicRoute>
-          <PrivateRoute path="/" isAuthenticated={isAuthenticated}>
+const PrivateRoute = ({ children, authenticated }) => (
+  authenticated ? children : <Navigate to="/login" state={{error: 'unauthenticated'}} replace={true} />
+);
+
+// const PublicRoute = ({ children, authenticated }) => (
+//   !authenticated ? children : <Navigate to="/board" replace={true} />
+// );
+
+export const AppRoutes = ({ isAuthenticated }) => (
+  <Router>
+    <Suspense fallback={
+      <Spin indicator={<LoadingOutlined style={{ fontSize: 60 }} spin />} />
+    }>
+      <Routes>
+        {/* <Route path="/" element={
+          <PublicRoute authenticated={isAuthenticated}>
+            <Navigate to="/login" replace={true} />
+          </PublicRoute>}
+        /> */}
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Registration />} />
+        <Route path="*" element={
+          <PrivateRoute authenticated={isAuthenticated}>
             <ProtectedRoutes />
-          </PrivateRoute>
-        </Switch>
-      </Suspense>
-    </Router>
-  );
-};
+          </PrivateRoute>}
+        />
+      </Routes>
+    </Suspense>
+  </Router>
+);
