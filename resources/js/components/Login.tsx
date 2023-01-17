@@ -19,11 +19,11 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Form, Input, Button, Checkbox, Row, Col, Card, Layout, notification } from 'antd';
+import { Form, Input, Button, Checkbox, Row, Col, Card, Layout, message } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import actions from '../redux/Authenticate/actions';
 
 interface RootState {
@@ -33,18 +33,15 @@ interface RootState {
 
 export default function Login() {
   const { state } = useLocation();
-  const { error } = state ?? {};
-  if (error && error === 'unauthenticated') {
-    notification.error({
-      message: 'Oops!',
-      description: 'Please login to continue.',
-      placement: 'topRight',
-      key: 'unauthenticated',
-    });
-  }
+  useEffect(() => {
+    if (state && state.error && state.error === 'unauthenticated') {
+      message.error('Please login to continue.');
+    }
+  }, [state]);
 
   const { loader } = useSelector((state : RootState) => state.authenticateReducer);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const onFinish = (values : any) => {
     dispatch({
       type: actions.LOGIN,
@@ -54,6 +51,7 @@ export default function Login() {
         remember: values.remember,
       },
     });
+    navigate('/board');
   };
 
   return (
