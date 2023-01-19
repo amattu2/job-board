@@ -19,46 +19,55 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import React, { lazy, Suspense } from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import { LoadingOutlined } from '@ant-design/icons';
-import { ProtectedRoutes } from './ProtectedRoutes';
+import React, { lazy, Suspense } from "react";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
+import { LoadingOutlined } from "@ant-design/icons";
+import { ProtectedRoutes } from "./ProtectedRoutes";
 
-const Login = lazy(() => import('../components/Login'));
-const Registration = lazy(() => import('../components/Register'));
+const Login = lazy(() => import("../components/Login"));
+const Registration = lazy(() => import("../components/Register"));
 
 interface RouteArgs {
-  children: React.ReactNode;
+  children?: React.ReactNode;
   authenticated: boolean;
-};
+}
 
 interface AppRoutesArgs {
   isAuthenticated: boolean;
-};
+}
 
-const PrivateRoute = ({ children, authenticated } : RouteArgs) : any => (
-  authenticated ? children : <Navigate to="/login" state={{error: 'unauthenticated'}} replace={true} />
-);
+const PrivateRoute = ({ children, authenticated }: RouteArgs): any =>
+  authenticated ? (
+    children
+  ) : (
+    <Navigate to="/login" state={{ error: "unauthenticated" }} replace={true} />
+  );
 
-// const PublicRoute = ({ children, authenticated }) => (
-//   !authenticated ? children : <Navigate to="/board" replace={true} />
-// );
+const PublicRoute = ({ children, authenticated }: RouteArgs): any =>
+  authenticated ? <Navigate to="/board" /> : <Navigate to="/login" />;
 
-export const AppRoutes = ({ isAuthenticated } : AppRoutesArgs) => (
+export const AppRoutes = ({ isAuthenticated }: AppRoutesArgs) => (
   <Router>
     <Suspense fallback={<LoadingOutlined style={{ fontSize: 60 }} spin />}>
       <Routes>
-        {/* <Route path="/" element={
-          <PublicRoute authenticated={isAuthenticated}>
-            <Navigate to="/login" replace={true} />
-          </PublicRoute>}
-        /> */}
+        <Route
+          path="/"
+          element={<PublicRoute authenticated={isAuthenticated} />}
+        />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Registration />} />
-        <Route path="*" element={
-          <PrivateRoute authenticated={isAuthenticated}>
-            <ProtectedRoutes />
-          </PrivateRoute>}
+        <Route
+          path="*"
+          element={
+            <PrivateRoute authenticated={isAuthenticated}>
+              <ProtectedRoutes />
+            </PrivateRoute>
+          }
         />
       </Routes>
     </Suspense>

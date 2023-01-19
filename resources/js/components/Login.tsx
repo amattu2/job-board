@@ -19,30 +19,41 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Form, Input, Button, Checkbox, Row, Col, Card, Layout, message } from 'antd';
-import { UserOutlined, LockOutlined } from '@ant-design/icons';
-import { NavLink, useLocation, useNavigate } from 'react-router-dom';
-import actions from '../redux/Authenticate/actions';
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  Form,
+  Input,
+  Button,
+  Checkbox,
+  Row,
+  Col,
+  Card,
+  Layout,
+  message,
+} from "antd";
+import { UserOutlined, LockOutlined } from "@ant-design/icons";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
+import actions from "../redux/Authenticate/actions";
 
 interface RootState {
-  isOn: boolean,
-  authenticateReducer: any,
-};
+  isOn: boolean;
+  authenticateReducer: any;
+}
 
 export default function Login() {
   const { state } = useLocation();
   useEffect(() => {
-    if (state && state.error && state.error === 'unauthenticated') {
-      message.error('Please login to continue.');
+    if (state && state.error && state.error === "unauthenticated") {
+      message.error("Please login to continue.");
     }
   }, [state]);
 
-  const { loader } = useSelector((state : RootState) => state.authenticateReducer);
+  const { isAuthenticated, loader } = useSelector(
+    (state: RootState) => state.authenticateReducer
+  );
   const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const onFinish = (values : any) => {
+  const onFinish = (values: any) => {
     dispatch({
       type: actions.LOGIN,
       payload: {
@@ -51,12 +62,18 @@ export default function Login() {
         remember: values.remember,
       },
     });
-    navigate('/board');
   };
 
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate("/");
+    }
+  }, [isAuthenticated]);
+
   return (
-    <Layout className="layout" style={{ height: '100%' }}>
-      <Row justify="center" align="middle" style={{ height: '100%' }}>
+    <Layout className="layout" style={{ height: "100%" }}>
+      <Row justify="center" align="middle" style={{ height: "100%" }}>
         <Col span={6}>
           <Card title="Login" bordered={false}>
             <Form name="normal_login" onFinish={onFinish}>
@@ -66,7 +83,7 @@ export default function Login() {
                 rules={[
                   {
                     required: true,
-                    message: 'Please input your Email!',
+                    message: "Please input your Email!",
                   },
                 ]}
               >
@@ -82,7 +99,7 @@ export default function Login() {
                 rules={[
                   {
                     required: true,
-                    message: 'Please input your Password!',
+                    message: "Please input your Password!",
                   },
                 ]}
               >
@@ -97,9 +114,7 @@ export default function Login() {
                 <Form.Item name="remember" valuePropName="checked" noStyle>
                   <Checkbox>Remember me</Checkbox>
                 </Form.Item>
-                <a className="login-form-forgot">
-                  Forgot password
-                </a>
+                <a className="login-form-forgot">Forgot password</a>
               </Form.Item>
               <Form.Item>
                 <Button
@@ -119,4 +134,4 @@ export default function Login() {
       </Row>
     </Layout>
   );
-};
+}

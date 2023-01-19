@@ -18,32 +18,41 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Button, Col, Card, Form, Input, Layout, Row } from 'antd';
-import { NavLink } from 'react-router-dom';
-import actions from '../redux/Authenticate/actions';
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Button, Col, Card, Form, Input, Layout, Row } from "antd";
+import { NavLink, useNavigate } from "react-router-dom";
+import actions from "../redux/Authenticate/actions";
 
 interface RootState {
-  isOn: boolean,
-  authenticateReducer: any,
-};
+  isOn: boolean;
+  authenticateReducer: any;
+}
 
 export default function Register() {
-  const { registerLoader } = useSelector((state : RootState) => state.authenticateReducer);
+  const { isAuthenticated, registerLoader } = useSelector(
+    (state: RootState) => state.authenticateReducer
+  );
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [form] = Form.useForm();
 
-  const onFinish = (values : any) => {
+  const onFinish = (values: any) => {
     dispatch({
       type: actions.REGISTER,
       payload: values,
     });
   };
 
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate("/");
+    }
+  }, [isAuthenticated]);
+
   return (
-    <Layout className="layout" style={{ height: '100%' }}>
-      <Row justify="center" align="middle" style={{ height: '100%' }}>
+    <Layout className="layout" style={{ height: "100%" }}>
+      <Row justify="center" align="middle" style={{ height: "100%" }}>
         <Col span={6}>
           <Card title="Register" bordered={false}>
             <Form
@@ -62,7 +71,7 @@ export default function Register() {
                 rules={[
                   {
                     required: true,
-                    message: 'Please input your name!',
+                    message: "Please input your name!",
                     whitespace: true,
                   },
                 ]}
@@ -75,12 +84,12 @@ export default function Register() {
                 validateTrigger="onSubmit"
                 rules={[
                   {
-                    type: 'email',
-                    message: 'The input is not valid E-mail!',
+                    type: "email",
+                    message: "The input is not valid E-mail!",
                   },
                   {
                     required: true,
-                    message: 'Please input your E-mail!',
+                    message: "Please input your E-mail!",
                   },
                 ]}
               >
@@ -93,7 +102,7 @@ export default function Register() {
                 rules={[
                   {
                     required: true,
-                    message: 'Please input your password!',
+                    message: "Please input your password!",
                   },
                 ]}
                 hasFeedback
@@ -103,22 +112,22 @@ export default function Register() {
               <Form.Item
                 name="password_confirmation"
                 label="Confirm Password"
-                dependencies={['password']}
+                dependencies={["password"]}
                 hasFeedback
                 validateTrigger="onSubmit"
                 rules={[
                   {
                     required: true,
-                    message: 'Please confirm your password!',
+                    message: "Please confirm your password!",
                   },
                   ({ getFieldValue }) => ({
                     validator(_, value) {
-                      if (!value || getFieldValue('password') === value) {
+                      if (!value || getFieldValue("password") === value) {
                         return Promise.resolve();
                       }
 
                       return Promise.reject(
-                        'The two passwords that you entered do not match!',
+                        "The two passwords that you entered do not match!"
                       );
                     },
                   }),
@@ -144,4 +153,4 @@ export default function Register() {
       </Row>
     </Layout>
   );
-};
+}

@@ -19,34 +19,34 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import React from 'react';
-import { Route, Routes } from 'react-router-dom';
-import { Layout, Menu, Image, Avatar, Space } from 'antd';
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+import { Layout, Menu, Image, Avatar } from "antd";
 import {
   FileSearchOutlined,
   MonitorOutlined,
   UserOutlined,
-} from '@ant-design/icons';
-import routes from './routes';
+} from "@ant-design/icons";
+import routes from "./routes";
 
 export const ProtectedRoutes = () => {
   const { Sider, Content } = Layout;
 
-  const getItem = (label : string, key : string, icon : React.ReactElement) => ({
+  const getItem = (label: string, key: string, icon: React.ReactElement) => ({
     key,
     icon,
     label,
   });
 
   const items = [
-    getItem('Job Board', '1', <FileSearchOutlined />),
-    getItem('Salaries', '2', <MonitorOutlined />),
+    getItem("Job Board", "1", <FileSearchOutlined />),
+    getItem("Salaries", "2", <MonitorOutlined />),
   ];
 
   return (
-    <Layout style={{ height: '100%' }}>
+    <Layout style={{ height: "100%" }}>
       <Sider collapsed={true}>
-        <div style={{ textAlign: 'center', padding: '8px', margin: '8px 0' }}>
+        <div style={{ textAlign: "center", padding: "8px", margin: "8px 0" }}>
           <Image
             src="https://via.placeholder.com/128x128"
             width={64}
@@ -56,30 +56,28 @@ export const ProtectedRoutes = () => {
         </div>
         <Menu
           theme="dark"
-          defaultSelectedKeys={['1']}
+          defaultSelectedKeys={["1"]}
           mode="inline"
           items={items}
         />
         <div
           style={{
-            position: 'absolute',
+            position: "absolute",
             bottom: 0,
-            width: '100%',
-            padding: '12px',
-            textAlign: 'center',
+            width: "100%",
+            padding: "12px",
+            textAlign: "center",
           }}
         >
           <Avatar shape="square" size="large" icon={<UserOutlined />} />
         </div>
       </Sider>
       <Content>
-        {/* <Routes>
-          {routes.map(({ component: Component, path }: any, index: React.Key | null | undefined) => (
-            <Route path={`/${path}`} key={index}>
-              <Component />
-            </Route>
+        <Routes>
+          {routes.map(({ component: Component, path }: any, index) => (
+            <Route path={`/${path}`} key={index} element={<Component />} />
           ))}
-        </Routes> */}
+        </Routes>
       </Content>
     </Layout>
   );
