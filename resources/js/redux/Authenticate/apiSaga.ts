@@ -7,10 +7,10 @@ import {
 } from '../../config/axiosClient';
 import { message } from 'antd';
 import actions from './actions';
-import { TakeableChannel } from 'redux-saga';
 
 interface ActionInterface {
   payload: any;
+  type: string;
 };
 
 function* login(action: ActionInterface) : any {

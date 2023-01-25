@@ -25,6 +25,7 @@ import constants from './constants';
 const axiosClient = axios.create();
 
 axiosClient.defaults.baseURL = constants.HOST_URL;
+// @ts-ignore
 axiosClient.defaults.headers = constants.headers;
 axiosClient.defaults.withCredentials = false;
 

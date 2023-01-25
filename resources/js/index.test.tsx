@@ -1,5 +1,5 @@
 /*
- * Produced: Tue Jan 17 2023
+ * Produced: Sun Jan 15 2023
  * Author: Alec M.
  * GitHub: https://amattu.com/links/github
  * Copyright: (C) 2023 Alec M.
@@ -19,19 +19,14 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
-import createSagaMiddleware from 'redux-saga';
-import rootReducer from './rootReducers';
-import rootSaga from './rootSaga';
+import { render } from '@testing-library/react';
+import React from 'react';
+import { Provider } from 'react-redux';
+import { ReactApp as App } from './ReactApp';
+import store from './redux/store';
 
-export default function configureAppStore() {
-  const sagaMiddleware = createSagaMiddleware();
-  const store = configureStore({
-    reducer: rootReducer,
-    middleware: [...getDefaultMiddleware(), sagaMiddleware],
+describe("App tests", () => {
+  it("Login Screen Test", () => {
+    render(<Provider store={store()}><App /></Provider>);
   });
-
-  sagaMiddleware.run(rootSaga);
-
-  return store;
-}
+});
