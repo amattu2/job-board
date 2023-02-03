@@ -31,7 +31,7 @@
         "fruitcake/laravel-cors": "^3.0",
         "guzzlehttp/guzzle": "^7.0.1",
         "laravel/framework": "^9.50",
-        "laravel/sanctum": "^3.0",
+        "laravel/sanctum": "^3.2",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^4.1"
     },
