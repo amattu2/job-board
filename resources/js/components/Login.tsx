@@ -37,22 +37,29 @@ import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import actions from "../redux/Authenticate/actions";
 
 interface RootState {
-  isOn: boolean;
   authenticateReducer: any;
 }
 
 export default function Login() {
   const { state } = useLocation();
+  const { isAuthenticated, loader } = useSelector(
+    (state: RootState) => state.authenticateReducer
+  );
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   useEffect(() => {
     if (state && state.error && state.error === "unauthenticated") {
       message.error("Please login to continue.");
     }
   }, [state]);
 
-  const { isAuthenticated, loader } = useSelector(
-    (state: RootState) => state.authenticateReducer
-  );
-  const dispatch = useDispatch();
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate("/");
+    }
+  }, [isAuthenticated]);
+
   const onFinish = (values: any) => {
     dispatch({
       type: actions.LOGIN,
@@ -63,13 +70,6 @@ export default function Login() {
       },
     });
   };
-
-  const navigate = useNavigate();
-  useEffect(() => {
-    if (isAuthenticated) {
-      navigate("/");
-    }
-  }, [isAuthenticated]);
 
   return (
     <Layout className="layout" style={{ height: "100%" }}>
@@ -89,7 +89,7 @@ export default function Login() {
               >
                 <Input
                   size="large"
-                  prefix={<UserOutlined className="site-form-item-icon" />}
+                  prefix={<UserOutlined className="site-form-item-icon" rev={undefined} />}
                   placeholder="Email"
                 />
               </Form.Item>
@@ -105,7 +105,7 @@ export default function Login() {
               >
                 <Input
                   size="large"
-                  prefix={<LockOutlined className="site-form-item-icon" />}
+                  prefix={<LockOutlined className="site-form-item-icon" rev={undefined} />}
                   type="password"
                   placeholder="Password"
                 />

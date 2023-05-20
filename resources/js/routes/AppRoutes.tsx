@@ -53,7 +53,7 @@ const PublicRoute = ({ children, authenticated }: RouteArgs): any =>
 
 export const AppRoutes = ({ isAuthenticated }: AppRoutesArgs) => (
   <Router>
-    <Suspense fallback={<LoadingOutlined style={{ fontSize: 60 }} spin />}>
+    <Suspense fallback={<LoadingOutlined style={{ fontSize: 60 }} spin rev={undefined} />}>
       <Routes>
         <Route
           path="/"

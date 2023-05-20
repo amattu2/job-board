@@ -21,36 +21,17 @@
 
 import React from "react";
 import {
-  Col,
-  Divider,
-  Layout,
-  Row,
-  Tag,
-  Typography,
-  Pagination,
-  Card,
-  Segmented,
-  Form,
-  Button,
-  Input,
-  Space,
-  Descriptions,
-  QRCode,
-  Avatar,
-  Rate,
-  Badge,
-  Statistic,
+  Col, Divider, Layout, Row,
+  Tag, Typography, Pagination,
+  Card, Segmented, Form, Button,
+  Input, Space, Descriptions,
+  QRCode, Avatar, Rate,
 } from "antd";
 import { CustomCard } from "./partials/CustomCard";
 import {
-  ArrowDownOutlined,
-  ArrowUpOutlined,
   BorderInnerOutlined,
-  CalendarOutlined,
-  CompassOutlined,
-  LikeOutlined,
-  SearchOutlined,
-  StockOutlined,
+  CalendarOutlined, CompassOutlined,
+  SearchOutlined, StockOutlined,
   UserOutlined,
 } from "@ant-design/icons";
 
@@ -78,13 +59,13 @@ const Board = () => {
         >
           <Form.Item name="keywords">
             <Input
-              prefix={<SearchOutlined />}
+              prefix={<SearchOutlined rev={undefined} />}
               placeholder="Job title, keywords, or company"
             />
           </Form.Item>
           <Form.Item name="location">
             <Input
-              prefix={<CompassOutlined />}
+              prefix={<CompassOutlined rev={undefined} />}
               placeholder="City, state, or zip code"
             />
           </Form.Item>
@@ -110,18 +91,18 @@ const Board = () => {
                       label: "Best Match",
                       value: "best_match",
                       icon: (
-                        <BorderInnerOutlined style={{ marginRight: "5px" }} />
+                        <BorderInnerOutlined style={{ marginRight: "5px" }} rev={undefined} />
                       ),
                     },
                     {
                       label: "Date",
                       value: "date",
-                      icon: <CalendarOutlined style={{ marginRight: "5px" }} />,
+                      icon: <CalendarOutlined style={{ marginRight: "5px" }} rev={undefined} />,
                     },
                     {
                       label: "Featured",
                       value: "featured",
-                      icon: <StockOutlined style={{ marginRight: "5px" }} />,
+                      icon: <StockOutlined style={{ marginRight: "5px" }} rev={undefined} />,
                     },
                   ]}
                   onResize={undefined}
@@ -148,7 +129,7 @@ const Board = () => {
                       <Avatar
                         shape="square"
                         size={64}
-                        icon={<UserOutlined />}
+                        icon={<UserOutlined rev={undefined} />}
                       />
                       <Space.Compact direction="vertical">
                         <Title level={5} style={{ margin: 0 }}>

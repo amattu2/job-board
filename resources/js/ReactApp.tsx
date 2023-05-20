@@ -19,20 +19,22 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import actions from './redux/Authenticate/actions';
-import Spinner from './components/partials/Spinner';
-import { AppRoutes } from './routes/AppRoutes';
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import actions from "./redux/Authenticate/actions";
+import Spinner from "./components/partials/Spinner";
+import { AppRoutes } from "./routes/AppRoutes";
 
 interface RootState {
-  authenticateReducer: any,
-  isAuthenticated: boolean,
-  validateUserLoader: boolean,
-};
+  authenticateReducer: any;
+  isAuthenticated: boolean;
+  validateUserLoader: boolean;
+}
 
-export const ReactApp = () : JSX.Element => {
-  const { isAuthenticated, validateUserLoader } = useSelector((state : RootState) => state.authenticateReducer);
+export const ReactApp = (): JSX.Element => {
+  const { isAuthenticated, validateUserLoader } = useSelector(
+    (state: RootState) => state.authenticateReducer
+  );
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -41,7 +43,7 @@ export const ReactApp = () : JSX.Element => {
         type: actions.GET_AUTH_USER,
       });
     }
-  }, []);
+  }, [isAuthenticated]);
 
   if (validateUserLoader) {
     return <Spinner />;

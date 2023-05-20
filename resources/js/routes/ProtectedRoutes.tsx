@@ -39,8 +39,8 @@ export const ProtectedRoutes = () => {
   });
 
   const items = [
-    getItem("Job Board", "1", <FileSearchOutlined />),
-    getItem("Salaries", "2", <MonitorOutlined />),
+    getItem("Job Board", "1", <FileSearchOutlined rev={undefined} />),
+    getItem("Salaries", "2", <MonitorOutlined rev={undefined} />),
   ];
 
   return (
@@ -69,7 +69,7 @@ export const ProtectedRoutes = () => {
             textAlign: "center",
           }}
         >
-          <Avatar shape="square" size="large" icon={<UserOutlined />} />
+          <Avatar shape="square" size="large" icon={<UserOutlined rev={undefined} />} />
         </div>
       </Sider>
       <Content>
