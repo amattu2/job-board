@@ -205,24 +205,33 @@ const Board = () => {
             <Row>
               <CustomCard>
                 <Row>
-                  <Space.Compact direction="vertical">
-                    <Title level={4} style={{ margin: "0" }}>
-                      Frontend Software Engineer
-                    </Title>
-                    <Link href="https://ant.design" target="_blank">
-                      Ant Design
-                    </Link>
-                    <Rate disabled defaultValue={4} />
-                    <Text>Raleigh, NC 27604</Text>
-                    <Space.Compact
-                      direction="horizontal"
-                      style={{ marginTop: "8px" }}
-                    >
-                      <Tag color="default">remote</Tag>
-                      <Tag color="default">401k</Tag>
-                      <Tag color="default">flex-hours</Tag>
+                  <Col span={16}>
+                    <Space.Compact direction="vertical">
+                      <Title level={4} style={{ margin: "0" }}>
+                        Frontend Software Engineer
+                      </Title>
+                      <Link href="https://ant.design" target="_blank">
+                        Ant Design
+                      </Link>
+                      <Rate disabled defaultValue={4} />
+                      <Text>Raleigh, NC 27604</Text>
+                      <Space.Compact
+                        direction="horizontal"
+                        style={{ marginTop: "8px" }}
+                      >
+                        <Tag color="default">remote</Tag>
+                        <Tag color="default">401k</Tag>
+                        <Tag color="default">flex-hours</Tag>
+                      </Space.Compact>
                     </Space.Compact>
-                  </Space.Compact>
+                  </Col>
+                  <Col span={8}>
+                    <QRCode
+                      value="https://ant.design/"
+                      color="#3b3b3b"
+                      style={{ backgroundColor: "#f2f2f2", marginLeft: "auto" }}
+                    />
+                  </Col>
                 </Row>
 
                 <Divider />
@@ -276,13 +285,6 @@ const Board = () => {
                     </Space>
                   </Col>
                 </Row>
-
-                  <QRCode
-                    value="https://ant.design/"
-                    color="#3b3b3b"
-                    style={{ backgroundColor: "#f2f2f2" }}
-                  />
-
               </CustomCard>
             </Row>
           </Col>
