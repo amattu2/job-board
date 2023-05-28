@@ -1,5 +1,7 @@
 # Introduction
 
+> **Warning**: This is a work-in-progress project. It provides a baseplate for a Job Board webapp.
+
 This is a Job Listing Board project built from the [nilanth/laravel-react-boilerplate](https://github.com/nilanth/laravel-react-boilerplate) boilerplate with a Laravel 9 backend and a React.js frontend using Antd. It's a continuous work-in-progress, with a primary focus towards implementing a functional UI.
 
 Tech Stack & Tools:
