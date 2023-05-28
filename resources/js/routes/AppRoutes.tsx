@@ -29,8 +29,8 @@ import {
 import { LoadingOutlined } from "@ant-design/icons";
 import { ProtectedRoutes } from "./ProtectedRoutes";
 
-const Login = lazy(() => import("../components/Login"));
-const Registration = lazy(() => import("../components/Register"));
+const Login = lazy(() => import("../content/Login"));
+const Registration = lazy(() => import("../content/Register"));
 
 interface RouteArgs {
   children?: React.ReactNode;

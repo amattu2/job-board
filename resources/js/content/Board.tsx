@@ -27,7 +27,7 @@ import {
   Input, Space, Descriptions,
   QRCode, Avatar, Rate,
 } from "antd";
-import { CustomCard } from "./partials/CustomCard";
+import { CustomCard } from "../components/CustomCard";
 import {
   BorderInnerOutlined,
   CalendarOutlined, CompassOutlined,

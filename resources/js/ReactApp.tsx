@@ -22,7 +22,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import actions from "./redux/Authenticate/actions";
-import Spinner from "./components/partials/Spinner";
+import Spinner from "./components/Spinner";
 import { AppRoutes } from "./routes/AppRoutes";
 
 interface RootState {
