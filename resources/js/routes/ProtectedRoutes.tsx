@@ -48,7 +48,7 @@ export const ProtectedRoutes = () => {
       <Sider collapsed={true}>
         <div style={{ textAlign: "center", padding: "8px", margin: "8px 0" }}>
           <Image
-            src="https://via.placeholder.com/128x128"
+            src="https://api.placeholder.app/image/128x128"
             width={64}
             height={32}
             preview={false}
@@ -69,7 +69,11 @@ export const ProtectedRoutes = () => {
             textAlign: "center",
           }}
         >
-          <Avatar shape="square" size="large" icon={<UserOutlined rev={undefined} />} />
+          <Avatar
+            shape="square"
+            size="large"
+            icon={<UserOutlined rev={undefined} />}
+          />
         </div>
       </Sider>
       <Content>
