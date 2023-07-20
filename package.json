@@ -23,7 +23,7 @@
         "postcss": "^8.4.20",
         "resolve-url-loader": "^5.0.0",
         "ts-jest": "^29.0.5",
-        "ts-loader": "^9.4.2"
+        "ts-loader": "^9.4.4"
     },
     "dependencies": {
         "@ant-design/icons": "^5.0.1",
