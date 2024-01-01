@@ -39,7 +39,7 @@
         "spatie/laravel-ignition": "^1.6",
         "fakerphp/faker": "^1.23.0",
         "laravel/sail": "^1.25.0",
-        "mockery/mockery": "^1.6.4",
+        "mockery/mockery": "^1.6.7",
         "nunomaduro/collision": "^7.5",
         "phpunit/phpunit": "^10.4.0"
     },
